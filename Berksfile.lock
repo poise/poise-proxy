@@ -1,0 +1,45 @@
+{
+  "dependencies": {
+    "poise-proxy": {
+      "locked_version": "1.0.0",
+      "path": "."
+    },
+    "apache2": {
+      "locked_version": "1.8.14"
+    },
+    "apt": {
+      "locked_version": "2.3.8"
+    },
+    "poise-proxy_test": {
+      "locked_version": "0.0.0",
+      "path": "./test/cookbooks/poise-proxy_test"
+    },
+    "nginx": {
+      "locked_version": "2.2.2"
+    },
+    "poise": {
+      "locked_version": "1.0.4"
+    },
+    "runit": {
+      "locked_version": "1.5.8"
+    },
+    "bluepill": {
+      "locked_version": "2.3.1"
+    },
+    "build-essential": {
+      "locked_version": "1.4.2"
+    },
+    "ohai": {
+      "locked_version": "1.1.12"
+    },
+    "yum": {
+      "locked_version": "3.1.0"
+    },
+    "yum-epel": {
+      "locked_version": "0.3.2"
+    },
+    "rsyslog": {
+      "locked_version": "1.10.2"
+    }
+  }
+}

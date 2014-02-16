@@ -1,0 +1,40 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+  attributes:
+    poise-proxy:
+      hostname: localhost
+
+platforms:
+  - name: ubuntu-12.04
+    run_list:
+    - recipe[apt]
+  #- name: centos-6.4
+
+suites:
+- name: default
+  run_list:
+  - recipe[poise-proxy_test]
+- name: nginx
+  run_list:
+  - recipe[nginx]
+  - recipe[poise-proxy_test]
+- name: apache
+  run_list:
+  - recipe[apache2]
+  - recipe[poise-proxy_test]
+- name: nginx-https
+  run_list:
+  - recipe[nginx]
+  - recipe[poise-proxy_test::https]
+- name: apache-https
+  run_list:
+  - recipe[apache2]
+  - recipe[poise-proxy_test::https]
+- name: subresource
+  run_list:
+  - recipe[nginx]
+  - recipe[poise-proxy_test::subresource]

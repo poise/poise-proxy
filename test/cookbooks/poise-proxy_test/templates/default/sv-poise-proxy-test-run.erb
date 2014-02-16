@@ -1,0 +1,5 @@
+#!/bin/sh
+
+exec 2>&1
+cd <%= @options[:path] %>
+exec python -m SimpleHTTPServer <%= @options[:port] %>
