@@ -65,4 +65,6 @@ server {
     proxy_redirect http:// https://;
     <%- end -%>
   }
+
+  <%= @new_resource.extra_content %>
 }

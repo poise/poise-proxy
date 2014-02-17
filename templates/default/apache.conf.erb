@@ -75,4 +75,6 @@ NameVirtualHost *:<%= port %>
   <%- Array(@new_resource.hostname).each do |host| -%>
   ProxyPassReverse / http://<%= host %>/
   <%- end -%>
+
+  <%= @new_resource.extra_content %>
 </VirtualHost>

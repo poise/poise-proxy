@@ -25,6 +25,7 @@ class Chef
     actions(:install)
 
     attribute('', template: true)
+    attribute(:extra, template: true, default_content: '')
     attribute(:proxy_name, kind_of: String, name_attribute: true)
     attribute(:port, kind_of: [String, Integer], default: lazy { parent ? parent.port : 8080 })
     attribute(:listen_ports, kind_of: Array, default: lazy { defaults['listen_ports'] })

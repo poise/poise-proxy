@@ -38,3 +38,7 @@ suites:
   run_list:
   - recipe[nginx]
   - recipe[poise-proxy_test::subresource]
+- name: extra
+  run_list:
+  - recipe[nginx]
+  - recipe[poise-proxy_test::extra]
