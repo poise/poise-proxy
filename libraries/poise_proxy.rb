@@ -36,8 +36,8 @@ class Chef
     attribute(:ssl_path, kind_of: String, default: lazy { defaults['ssl_path'] || ::File.join((parent && parent.respond_to?(:path) ? parent.path : '/etc'), 'ssl') })
     attribute(:ssl_cert, kind_of: String)
     attribute(:ssl_key, kind_of: String)
-    attribute(:ssl_cert_path, kind_of: String, default: lazy { defaults['ssl_cert_path'] || ::File.join(ssl_path, "#{proxy_name}.pem") })
-    attribute(:ssl_key_path, kind_of: String, default: lazy { defaults['ssl_key_path'] || ::File.join(ssl_path, "#{proxy_name}.key") })
+    attribute(:ssl_cert_path, kind_of: String, default: lazy { defaults['ssl_cert_path'] || ::File.join(ssl_path, "certs", "#{proxy_name}.pem") })
+    attribute(:ssl_key_path, kind_of: String, default: lazy { defaults['ssl_key_path'] || ::File.join(ssl_path, "private", "#{proxy_name}.key") })
 
     def parent(arg=nil)
       arg = run_context.resource_collection.find(arg) if arg.is_a?(String)
@@ -125,6 +125,18 @@ class Chef
     def create_ssl_dir
       if new_resource.ssl_enabled
         directory new_resource.ssl_path do
+          owner 'root'
+          group 'root'
+          mode '755'
+        end
+
+        directory ::File.join(new_resource.ssl_path, 'certs') do
+          owner 'root'
+          group 'root'
+          mode '755'
+        end
+
+        directory ::File.join(new_resource.ssl_path, 'private') do
           owner 'root'
           group 'root'
           mode '700'
