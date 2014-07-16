@@ -40,7 +40,7 @@ NameVirtualHost *:<%= port %>
 
 <% main_ports = @new_resource.ssl_enabled ? @new_resource.ssl_listen_ports : @new_resource.listen_ports -%>
 <% main_ports.select{|port| port.to_i != (@new_resource.ssl_enabled ? 443 : 80)}.each do |port| -%>
-Listen <%= port %><%= @new_resource.ssl_enabled ? 'https' : 'http' %>
+Listen <%= port %> <%= @new_resource.ssl_enabled ? 'https' : 'http' %>
 NameVirtualHost *:<%= port %>
 <% end -%>
 <VirtualHost <%= main_ports.map{|port| "*:#{port}"}.join(' ') %>>
