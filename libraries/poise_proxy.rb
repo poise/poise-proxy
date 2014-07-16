@@ -29,7 +29,7 @@ class Chef
     attribute(:proxy_name, kind_of: String, name_attribute: true)
     attribute(:port, kind_of: [String, Integer], default: lazy { parent ? parent.port : 8080 })
     attribute(:listen_ports, kind_of: Array, default: lazy { defaults['listen_ports'] })
-    attribute(:hostname, kind_of: String, default: lazy { defaults['hostname'] || node['fqdn'] })
+    attribute(:hostname, kind_of: [String, Array], default: lazy { defaults['hostname'] || node['fqdn'] })
     attribute(:ssl_enabled, equal_to: [true, false], default: lazy { ssl_cert || ssl_key || defaults['ssl_enabled'] })
     attribute(:ssl_redirect_http, equal_to: [true, false], default: lazy { defaults['ssl_redirect_http'] })
     attribute(:ssl_listen_ports, kind_of: Array, default: lazy { defaults['ssl_listen_ports'] })
